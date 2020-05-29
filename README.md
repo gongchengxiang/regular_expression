@@ -4,15 +4,27 @@
 
 ## 1、语法
 ```JavaScript
-/正则表达式主体/修饰符(可选)
+/正则表达式主体/修饰符(可选)    (/pattern/modifiers)
 ```
-## 2、i 表示搜索不区分大小写, g表示匹配所有的，没有g则匹配到第一个就停止了
+## 2、i修饰符表示搜索不区分大小写, g修饰符表示匹配所有的，没有g则匹配到第一个就停止了
 ```JavaScript
-const res_gcx = /gcx/i;
+const reg_gcx = /gcx/i;
 const str = 'hello, GCx!';
-const startIndex = str.search(res_gcx);
+const startIndex = str.search(reg_gcx); // 7
 ```
-## 3、常用方法search和replace
+## 3、m修饰符表示多行(\n换行情况)匹配，如果目标字符串中没有 “\n” 字符，或者模式中没有出现 ^ 或 $，设置这个修饰符不产生任何影响。
 ```JavaScript
-const replace_res = 'sghifsdhgdfshugiSdfuhgfdj'.replace(/sd/ig,'*');
+var str1 = "abcggab\nabcoab";
+console.log(str1.match(/^abc/g)); // [ 'abc' ]
+console.log(str1.match(/^abc/gm)); // [ 'abc', 'abc' ]
+console.log(str1.match(/abc/g)); // [ 'abc', 'abc' ]
+console.log(str1.match(/abc/gm)); // [ 'abc', 'abc' ]
+console.log(str1.match(/ab$/g)); // [ 'ab' ]
+console.log(str1.match(/ab$/gm)); // [ 'ab', 'ab' ]
+```
+
+
+## n、常用方法search和replace
+```JavaScript
+const replace_reg = 'sghifsdhgdfshugiSdfuhgfdj'.replace(/sd/ig,'*');
 ```
